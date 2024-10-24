@@ -15,7 +15,7 @@ export class LoginComponent {
   loginData = {
     username: '',
     password: '',
-    isWebAccess:"true"
+    isWebAccess: "true"
   };
 
   constructor(private apiService: ApiService, private router: Router) {}
