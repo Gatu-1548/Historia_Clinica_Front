@@ -1,0 +1,32 @@
+<!-- Navbar superior -->
+<nav class="navbar-top">
+    <div class="logo-container">
+      <img src="" alt="Logo" class="logo" />
+    </div>
+    <div class="user-actions">
+      <button (click)="logout()">Cerrar sesión</button>
+      <i class="fa fa-user-circle" aria-hidden="true"></i> <!-- Ícono de usuario -->
+    </div>
+  </nav>
+  
+  <!-- Navbar lateral -->
+  <nav class="navbar-side">
+    <ul class="navbar-menu">
+      <li>
+        <a routerLink="/dashboard"></a>
+      </li>
+      <li>
+        <a (click)="toggleSubMenu('admin')">Administrador</a>
+        <ul *ngIf="showSubMenu['admin']"> <!-- Cambiado a notación con corchetes -->
+          <li><a routerLink="/roles">Gestionar Roles</a></li>
+          <li><a routerLink="/permissions">Gestionar Permisos</a></li>
+          <li><a routerLink="/users">Administrar Usuarios</a></li>
+          <li><a routerLink="/bitacora">Administrar Accesos (Bitácora)</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/registros">Registros</a></li>
+      <li><a routerLink="/personal">Personal</a></li>
+      <li><a routerLink="/configuracion">Configuración</a></li>
+      <li><a routerLink="/atenciones-medicas">Atenciones Médicas</a></li>
+    </ul>
+  </nav>
