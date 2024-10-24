@@ -1,6 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';  // Usa provideHttpClient
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';  // Importa las rutas desde app.routes.ts
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes), provideHttpClient()]  // Usa provideHttpClient y las rutas de app.routes.ts
+})
+  .catch(err => console.error(err));

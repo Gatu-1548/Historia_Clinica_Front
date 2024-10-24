@@ -1,0 +1,87 @@
+/* Estilos para el contenedor del formulario de registro */
+.register-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el título del formulario */
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  /* Estilos para cada grupo de campo */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilos para las etiquetas */
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Estilos para los inputs y select */
+  input, select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Cambia el color del borde cuando se enfoca el campo */
+  input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Estilos para el botón de enviar */
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Cambia el color del botón cuando se pasa el cursor */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para hacer el formulario responsivo */
+  @media (max-width: 768px) {
+    .register-container {
+      padding: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    input, select {
+      padding: 0.65rem;
+      font-size: 0.9rem;
+    }
+  
+    button {
+      padding: 0.65rem;
+      font-size: 0.9rem;
+    }
+  }
