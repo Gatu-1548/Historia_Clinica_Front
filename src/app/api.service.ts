@@ -30,5 +30,11 @@ login(credentials: any): Observable<any> {
   );
 }
 
+  // Método para obtener usuarios
+  getUsuarios(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/auth/users`);
+  }
+
+
   // Otros métodos pueden ir aquí
 }

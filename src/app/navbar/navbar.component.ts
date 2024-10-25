@@ -1,27 +1,31 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; // Importa RouterModule para enlaces de rutas
-import { CommonModule } from '@angular/common'; // Importa CommonModule para usar *ngIf
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ManageUsuariosComponent } from '../administrador/manage-usuarios/manage-usuarios.component'; // Importa el componente
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule], // Añade CommonModule aquí
+  imports: [RouterModule, CommonModule, ManageUsuariosComponent], // Asegúrate de importar el componente
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  showSubMenu: { [key: string]: boolean } = {  // Permitir claves dinámicas
+  showSubMenu: { [key: string]: boolean } = {
     admin: false
   };
+  showUsuariosPanel = false; // Controla la visibilidad del panel de usuarios
 
-  // Método para alternar submenús
-  toggleSubMenu(menu: string) {  // Usar 'string' para cualquier menú
+  toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
   }
 
-  // Método para cerrar sesión
+  toggleUsuariosPanel() {
+    this.showUsuariosPanel = !this.showUsuariosPanel; // Muestra/oculta el panel de usuarios
+  }
+
   logout() {
     localStorage.removeItem('token');
-    window.location.href = '/'; // Redirige al home al cerrar sesión
+    window.location.href = '/';
   }
 }

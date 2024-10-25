@@ -82,9 +82,9 @@
   top: 60px;
   left: 0;
   border-right: 1px solid #e0e0e0;
-  z-index: 5;
-  transition: all 0.3s ease;
+  z-index: 20;  /* Asegura que el navbar esté encima del contenido */
 }
+
 
 .navbar-menu {
   list-style: none;
@@ -138,17 +138,73 @@
   background-color: #e0f2ff;
 }
 
-/* Estilos del contenido principal */
+/* Contenedor principal del contenido */
 .dashboard-container {
-  margin-left: 240px;
+  margin-left: 240px;  /* Este valor debe ser igual al ancho del navbar */
   padding: 20px;
   padding-top: 80px;
   background-color: #f4f6f8;
   min-height: 100vh;
+  z-index: 5;
+  width: calc(100% - 240px); /* Ocupa todo el espacio restante después del navbar */
+  overflow-x: auto;  /* Evitar que el contenido se salga de la pantalla horizontalmente */
 }
 
-/* Transiciones y mejoras de estilo */
+/* El contenido ocupará todo el espacio restante */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+/* Panel lateral que contiene el listado de usuarios */
+.usuarios-panel {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.usuarios-panel h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.usuarios-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usuarios-panel th, .usuarios-panel td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.usuarios-panel table tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Ajustes de visibilidad y diseño */
 button, a {
   outline: none;
   transition: all 0.3s ease;
+}
+
+/* Mejora del diseño de la tabla */
+.usuarios-panel table {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.usuarios-panel table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.usuarios-panel table tr:hover {
+  background-color: #e9ecef;
 }

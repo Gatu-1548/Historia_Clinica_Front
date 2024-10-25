@@ -1,4 +1,3 @@
-<!-- Navbar superior -->
 <nav class="navbar-top">
   <div class="logo-dashboard-container">
     <div class="logo-container">
@@ -9,37 +8,32 @@
     </li>
   </div>
   <div class="user-actions">
-    <i class="fa fa-user-circle user-icon" aria-hidden="true"></i> <!-- Ícono de usuario -->
+    <i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
     <button (click)="logout()">Cerrar sesión</button>
   </div>
 </nav>
+
 <!-- Navbar lateral -->
 <nav class="navbar-side">
   <ul class="navbar-menu">
-    
     <li>
       <a (click)="toggleSubMenu('admin')"><i class="fa fa-cogs"></i> Administrador</a>
       <ul *ngIf="showSubMenu['admin']">
-        <li><a routerLink="/roles"><i class="fa fa-user-shield"></i> Gestionar Roles</a></li>
-        <li><a routerLink="/permissions"><i class="fa fa-key"></i> Gestionar Permisos</a></li>
-        <li><a routerLink="/users"><i class="fa fa-users"></i> Administrar Usuarios</a></li>
-        <li><a routerLink="/bitacora"><i class="fa fa-history"></i> Administrar Accesos</a></li>
+        <li><a (click)="toggleUsuariosPanel()"><i class="fa fa-users"></i> Administrar Usuarios</a></li>
+        <!-- Otras opciones del administrador -->
       </ul>
     </li>
-
     <li><a routerLink="/registros"><i class="fa fa-book"></i> Registros</a></li>
-
-    <li>
-      <a (click)="toggleSubMenu('personal')"><i class="fa fa-cogs"></i> Personal</a>
-      <ul *ngIf="showSubMenu['personal']">
-        <li><a routerLink="/roles"><i class="fa fa-user-shield"></i> Gestionar Roles</a></li>
-
-      </ul>
-    </li>
-
-   
-    <!-- <li><a routerLink="/personal"><i class="fa fa-id-badge"></i> Personal</a></li> -->
     <li><a routerLink="/configuracion"><i class="fa fa-wrench"></i> Configuración</a></li>
     <li><a routerLink="/atenciones-medicas"><i class="fa fa-stethoscope"></i> Atenciones Médicas</a></li>
   </ul>
 </nav>
+
+<!-- Panel que contiene el listado de usuarios -->
+<div class="dashboard-container">
+  <div class="content">
+    <div *ngIf="showUsuariosPanel" class="usuarios-panel">
+      <app-manage-usuarios></app-manage-usuarios>
+    </div>
+  </div>
+</div>
