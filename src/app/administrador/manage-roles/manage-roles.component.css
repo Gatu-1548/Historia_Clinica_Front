@@ -1,36 +1,76 @@
 .roles-container {
     padding: 20px;
-    background-color: #fff;
+    background-color: #fff; /* Fondo blanco */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra similar a la de usuarios */
     margin-top: 20px;
 }
 
+/* Tabla */
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
+/* Encabezado de la tabla */
+thead {
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd; /* Borde inferior para el encabezado */
+}
+
+/* Celdas de la tabla */
 th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Borde inferior de cada celda */
 }
 
-thead {
-    background-color: #f9f9f9;
+/* Input de búsqueda */
+.search-input {
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
+/* Contenedor de paginación */
+.pagination-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-container button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Estilos para crear y editar roles */
 .create-role {
     margin-bottom: 20px;
 }
 
 .create-btn, .edit-btn, .save-btn, .cancel-btn, .delete-btn {
-    padding: 6px 12px;
+    padding: 5px 10px;
     margin-right: 5px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .create-btn {
