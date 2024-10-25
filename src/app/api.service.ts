@@ -35,6 +35,24 @@ login(credentials: any): Observable<any> {
     return this.http.get(`${this.baseUrl}/auth/users`);
   }
 
+// Obtener roles
+getRoles(): Observable<any> {
+  return this.http.get<any>(`${this.baseUrl}/auth/roles`);
+}
 
-  // Otros métodos pueden ir aquí
+// Crear un rol
+createRole(rol: any): Observable<any> {
+  return this.http.post<any>(`${this.baseUrl}/auth/roles`, rol);
+}
+
+// Editar un rol
+updateRole(id: number, rol: any): Observable<any> {
+  return this.http.put<any>(`${this.baseUrl}/auth/roles/${id}`, rol);
+}
+
+// Eliminar un rol
+deleteRole(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.baseUrl}/auth/roles/${id}`);
+}
+
 }

@@ -145,13 +145,13 @@
   padding-top: 80px;
   background-color: #f4f6f8;
   min-height: 100vh;
-  z-index: 5;
+  z-index: 5;  /*Asegura que el contenido esté debajo del navbar */
   width: calc(100% - 240px); /* Ocupa todo el espacio restante después del navbar */
   overflow-x: auto;  /* Evitar que el contenido se salga de la pantalla horizontalmente */
 }
 
 /* El contenido ocupará todo el espacio restante */
-.content {
+.content { 
   flex-grow: 1;
   padding: 20px;
   background-color: #f4f6f8;

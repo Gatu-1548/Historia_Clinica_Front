@@ -1,0 +1,38 @@
+<div class="roles-container">
+    <h2>Gestionar Roles</h2>
+  
+    <!-- Crear nuevo rol -->
+    <div class="create-role">
+      <input type="text" [(ngModel)]="newRoleName" placeholder="Nuevo rol" />
+      <button (click)="createRole()" class="create-btn">Crear Rol</button>
+    </div>
+  
+    <!-- Tabla de roles -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let role of roles">
+          <td>{{ role.id }}</td>
+          <td *ngIf="editedRole?.id !== role.id">{{ role.nombre }}</td>
+          <td *ngIf="editedRole?.id === role.id">
+            <input [(ngModel)]="editRoleName" type="text" />
+          </td>
+          <td>
+            <!-- Mostrar los botones de editar/eliminar si no está en modo de edición -->
+            <button *ngIf="editedRole?.id !== role.id" (click)="editRole(role)" class="edit-btn">Editar</button>
+            <button *ngIf="editedRole?.id === role.id" (click)="saveRole()" class="save-btn">Guardar</button>
+            <button *ngIf="editedRole?.id === role.id" (click)="cancelEdit()" class="cancel-btn">Cancelar</button>
+            
+            <!-- Mostrar el botón de eliminar solo cuando no se está editando -->
+            <button *ngIf="editedRole?.id !== role.id" (click)="deleteRole(role.id)" class="delete-btn">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

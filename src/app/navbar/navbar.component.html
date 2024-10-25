@@ -1,3 +1,4 @@
+
 <nav class="navbar-top">
   <div class="logo-dashboard-container">
     <div class="logo-container">
@@ -20,6 +21,7 @@
       <a (click)="toggleSubMenu('admin')"><i class="fa fa-cogs"></i> Administrador</a>
       <ul *ngIf="showSubMenu['admin']">
         <li><a (click)="toggleUsuariosPanel()"><i class="fa fa-users"></i> Administrar Usuarios</a></li>
+        <li><a (click)="toggleRolesPanel()"><i class="fa fa-users-cog"></i> Gestionar Roles</a></li> <!-- Nueva opción para gestionar roles -->
         <!-- Otras opciones del administrador -->
       </ul>
     </li>
@@ -29,11 +31,15 @@
   </ul>
 </nav>
 
-<!-- Panel que contiene el listado de usuarios -->
+<!-- Panel que contiene el listado de usuarios y roles -->
 <div class="dashboard-container">
   <div class="content">
     <div *ngIf="showUsuariosPanel" class="usuarios-panel">
       <app-manage-usuarios></app-manage-usuarios>
     </div>
+    <div *ngIf="showRolesPanel" class="roles-panel">
+      <app-manage-roles></app-manage-roles> <!-- Añadimos el componente de roles aquí -->
+    </div>
   </div>
+  <router-outlet></router-outlet> <!-- Aquí se mostrarán los componentes -->
 </div>

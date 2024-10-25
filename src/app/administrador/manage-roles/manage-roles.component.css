@@ -1,0 +1,54 @@
+.roles-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f9f9f9;
+}
+
+.create-role {
+    margin-bottom: 20px;
+}
+
+.create-btn, .edit-btn, .save-btn, .cancel-btn, .delete-btn {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.create-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-btn, .save-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
