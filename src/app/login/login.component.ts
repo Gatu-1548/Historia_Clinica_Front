@@ -4,12 +4,13 @@ import { ApiService } from '../api.service';  // Servicio API para realizar la s
 import { HttpClientModule } from '@angular/common/http';  // Módulo HTTP
 import { FormsModule } from '@angular/forms';  // Para ngModel
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [HttpClientModule, FormsModule]
+  imports: [ HttpClientModule, FormsModule]
 })
 export class LoginComponent {
   loginData = {
@@ -29,5 +30,9 @@ export class LoginComponent {
     }, error => {
       console.error('Error en el login:', error);
     });
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);  // Redirige manualmente al componente de registro
   }
 }
