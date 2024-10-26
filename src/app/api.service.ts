@@ -71,4 +71,19 @@ deleteEspecialidad(id: number): Observable<any> {
   return this.http.delete<any>(`${this.baseUrl}/auth/especialidades/${id}`);
 }
 
+// Obtener lista de empleados
+getEmpleados(): Observable<any> {
+  return this.http.get(`${this.baseUrl}/auth/medicos`);
+}
+
+// Crear un nuevo empleado
+createEmpleado(empleadoData: any): Observable<any> {
+  return this.http.post(`${this.baseUrl}/auth/medicos/crear`, empleadoData);
+}
+
+// Editar un empleado
+updateEmpleado(id: number, empleadoData: any): Observable<any> {
+  return this.http.put(`${this.baseUrl}/auth/medicos/editar/${id}?rolId=${empleadoData.rolId}`, empleadoData);
+}
+
 }

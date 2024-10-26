@@ -1,4 +1,3 @@
-
 <nav class="navbar-top">
   <div class="logo-dashboard-container">
     <div class="logo-container">
@@ -30,6 +29,12 @@
         <li><a (click)="toggleEspecialidadesPanel()"><i class="fa fa-stethoscope"></i> Gestionar Especialidades</a></li>
       </ul>
     </li>
+    <li>
+      <a (click)="toggleSubMenu('personal')"><i class="fa fa-briefcase"></i> Personal</a>
+      <ul *ngIf="showSubMenu['personal']">
+        <li><a (click)="toggleEmpleadosPanel()"><i class="fa fa-user-md"></i> Gestionar Empleados</a></li>
+      </ul>
+    </li>
     <li><a routerLink="/configuracion"><i class="fa fa-wrench"></i> Configuración</a></li>
     <li><a routerLink="/atenciones-medicas"><i class="fa fa-stethoscope"></i> Atenciones Médicas</a></li>
   </ul>
@@ -46,6 +51,9 @@
     </div>
     <div *ngIf="showEspecialidadesPanel" class="especialidades-panel">
       <app-manage-especialidades></app-manage-especialidades>
+    </div>
+    <div *ngIf="showEmpleadosPanel" class="empleados-panel">
+      <app-manage-empleados></app-manage-empleados>
     </div>
   </div>
 </div>
