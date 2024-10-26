@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ManageUsuariosComponent } from '../administrador/manage-usuarios/manage-usuarios.component';
@@ -22,7 +22,7 @@ import { PerfilComponent } from '../user/perfil/perfil.component'; // Importa el
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   showSubMenu: { [key: string]: boolean } = {
     admin: false,
     registros: false,
@@ -35,6 +35,14 @@ export class NavbarComponent {
   showProfilePanel = false; // Añade el panel de perfil
   isUserMenuOpen = false;
 
+  userName: string = ''; // Variable para almacenar el nombre del usuario
+
+  ngOnInit() {
+    // Recuperar los datos del usuario desde Session Storage
+    const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    this.userName = user.nombre || 'Usuario'; // Usar 'Usuario' si no hay un nombre
+  }
+  
   toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
   }
@@ -81,6 +89,7 @@ export class NavbarComponent {
 
   logout() {
     localStorage.removeItem('token');
+    sessionStorage.clear(); // Limpiar todos los datos de la sesión
     window.location.href = '/';
   }
 

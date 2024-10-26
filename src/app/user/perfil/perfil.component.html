@@ -1,43 +1,59 @@
-<div class="profile-container">
+<div class="profile-page">
+  <!-- Información Personal -->
+  <div class="profile-card">
     <h2>Perfil de Usuario</h2>
-  
-    <div class="profile-info">
-      <div class="profile-row">
-        <label>ID:</label>
-        <span>{{ id }}</span>
-      </div>
-      <div class="profile-row">
-        <label>CI:</label>
-        <span>{{ ci }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Nombre:</label>
-        <span>{{ nombre }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Apellido Paterno:</label>
-        <span>{{ apellido_paterno }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Apellido Materno:</label>
-        <span>{{ apellido_materno }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Fecha de Nacimiento:</label>
-        <span>{{ fecha_nacimiento }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Email (Username):</label>
-        <span>{{ username }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Teléfono:</label>
-        <span>{{ telefono }}</span>
-      </div>
-      <div class="profile-row">
-        <label>Role:</label>
-        <span>{{ role }}</span>
-      </div>
+
+    <div class="profile-section">
+      <label>ID</label>
+      <span>{{ id }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>CI</label>
+      <span>{{ ci }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Nombre</label>
+      <span>{{ nombre }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Apellido Paterno</label>
+      <span>{{ apellido_paterno }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Apellido Materno</label>
+      <span>{{ apellido_materno }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Fecha de Nacimiento</label>
+      <span>{{ fecha_nacimiento }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Email (Username)</label>
+      <span>{{ username }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Teléfono</label>
+      <span>{{ telefono }}</span>
+    </div>
+
+    <div class="profile-section">
+      <label>Role</label>
+      <span>{{ role }}</span>
     </div>
   </div>
-  
+
+  <!-- Imagen de perfil -->
+  <div class="profile-picture-card">
+    <h3>My Profile Picture</h3>
+    <img src="path/to/profile-picture.jpg" alt="Profile picture" class="profile-picture" />
+    <p>Add a photo of you to be easily recognized</p>
+    <button>Profile History</button>
+  </div>
+</div>

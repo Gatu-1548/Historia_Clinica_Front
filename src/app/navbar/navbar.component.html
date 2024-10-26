@@ -9,7 +9,7 @@
   </div>
   <div class="user-actions">
     <img src="path/to/profile-picture.png" alt="User" class="user-avatar" />
-    <span class="user-name" (click)="toggleUserMenu()">Hello Sami ▼</span>
+    <span class="user-name" (click)="toggleUserMenu()">Hello {{ userName }} 👋  ▼</span>
     <ul class="user-menu" *ngIf="isUserMenuOpen">
       <li (click)="goToProfile()">Perfil</li>
       <li (click)="logout()">Cerrar sesión</li>

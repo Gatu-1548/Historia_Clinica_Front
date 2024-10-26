@@ -1,52 +1,83 @@
-/* Contenedor principal del perfil */
-.profile-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-container h2 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilo para la información del perfil */
-  .profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  /* Cada fila del perfil */
-  .profile-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  /* Etiqueta de cada campo */
-  .profile-row label {
-    font-weight: bold;
-    color: #555;
-    flex: 1;
-  }
-  
-  /* Valor de cada campo */
-  .profile-row span {
-    flex: 2;
-    color: #333;
-    text-align: right;
-  }
-  
-  /* Estilo de la última fila para que no tenga borde */
-  .profile-row:last-child {
-    border-bottom: none;
-  }
-  
+/* Contenedor principal de la página de perfil */
+.profile-page {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Tarjeta de perfil de usuario */
+.profile-card {
+  flex: 3;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Sección de cada campo del perfil */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-section label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Tarjeta para la imagen de perfil */
+.profile-picture-card {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-picture-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.profile-picture-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #ddd;
+}
+
+.profile-picture-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.profile-picture-card button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #007bff;
+  background-color: transparent;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-picture-card button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}

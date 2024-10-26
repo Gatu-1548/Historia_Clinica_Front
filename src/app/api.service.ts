@@ -30,6 +30,19 @@ login(credentials: any): Observable<any> {
   );
 }
 
+// Método para obtener los datos completos del usuario por su username
+getUserByUsername(username: string): Observable<any> {
+  const url = `${this.baseUrl}/auth/getUserByUsername`;
+  const token = localStorage.getItem('token') || ''; // Usar el token almacenado para autenticación
+  return this.http.post(url, { username }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  });
+}
+
+
   // Método para obtener usuarios
   getUsuarios(): Observable<any> {
     return this.http.get(`${this.baseUrl}/auth/users`);
