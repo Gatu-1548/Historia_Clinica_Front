@@ -8,6 +8,7 @@ import { ManageUsuariosComponent } from './administrador/manage-usuarios/manage-
 import { ManageRolesComponent } from './administrador/manage-roles/manage-roles.component'; // Asegúrate de tener este componente creado
 import { ManageEspecialidadesComponent } from './registro/manage-especialidades/manage-especialidades.component';
 import { PerfilComponent } from './user/perfil/perfil.component';
+import { ManagePermissionsComponent } from './administrador/manage-permissions/manage-permissions.component'; // Añadir importación
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'manage-usuarios', component: ManageUsuariosComponent },
   { path: 'gestionar-roles', component: ManageRolesComponent },
   { path: 'gestionar-especialidades', component: ManageEspecialidadesComponent },
-  { path: 'perfil', component: PerfilComponent } // Ruta para el perfil
+  { path: 'perfil', component: PerfilComponent }, // Ruta para el perfil
+  { path: 'gestionar-permisos', component: ManagePermissionsComponent }, // Nueva ruta para permisos
 ];

@@ -99,4 +99,26 @@ updateEmpleado(id: number, empleadoData: any): Observable<any> {
   return this.http.put(`${this.baseUrl}/auth/medicos/editar/${id}?rolId=${empleadoData.rolId}`, empleadoData);
 }
 
+// Método para obtener un médico por ID
+getEmpleadoById(id: number): Observable<any> {
+  return this.http.get(`${this.baseUrl}/auth/medicos/${id}`);
+}
+
+
+
+
+// Obtener lista de permisos
+getPermissions(): Observable<any> {
+  return this.http.get(`${this.baseUrl}/auth/permisos`);
+}
+
+// Obtener permisos por rol ID
+getRolePermissions(roleId: number): Observable<any> {
+  return this.http.get(`${this.baseUrl}/auth/roles/${roleId}`);
+}
+
+// Actualizar permisos del rol
+updateRolePermissions(roleId: number, permissionsData: any): Observable<any> {
+  return this.http.put(`${this.baseUrl}/auth/roles/editar/${roleId}`, permissionsData);
+}
 }

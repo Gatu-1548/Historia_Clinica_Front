@@ -18,7 +18,7 @@ export class ManageEmpleadosComponent implements OnInit {
   pageSize: number = 5;
   totalPages: number = 1;
   editedEmpleado: any = null;
-  isModalOpen = false;  // Estado para abrir/cerrar el modal
+  isModalOpen = false;
 
   editEmpleadoData: any = {
     estado: '',
@@ -27,7 +27,9 @@ export class ManageEmpleadosComponent implements OnInit {
       ci: '',
       nombre: '',
       apellido_paterno: '',
-      apellido_materno: ''
+      apellido_materno: '',
+      telefono: '',
+      email: ''
     },
     especialidades: []
   };
@@ -84,7 +86,7 @@ export class ManageEmpleadosComponent implements OnInit {
   createEmpleado() {
     this.apiService.createEmpleado(this.editEmpleadoData).subscribe(() => {
       this.loadEmpleados();
-      this.closeModal(); // Cerrar el modal después de crear
+      this.closeModal();
     });
   }
 
@@ -96,9 +98,11 @@ export class ManageEmpleadosComponent implements OnInit {
       ci: empleado.user.ci,
       nombre: empleado.user.nombre,
       apellido_paterno: empleado.user.apellido_paterno,
-      apellido_materno: empleado.user.apellido_materno
+      apellido_materno: empleado.user.apellido_materno,
+      telefono: empleado.user.telefono,
+      email: empleado.user.email
     };
-    this.isModalOpen = true; // Abrir el modal para editar
+    this.isModalOpen = true;
   }
 
   saveEmpleado() {
@@ -123,9 +127,35 @@ export class ManageEmpleadosComponent implements OnInit {
         ci: '',
         nombre: '',
         apellido_paterno: '',
-        apellido_materno: ''
+        apellido_materno: '',
+        telefono: '',
+        email: ''
       },
       especialidades: []
     };
+  }
+
+  autoFillForm(ci: string) {
+    // Buscar el empleado que tiene el CI en la lista de empleados cargados
+    const empleado = this.empleados.find((emp: any) => emp.user.ci === ci);
+    
+    // Si se encuentra el empleado, usa su ID para hacer una solicitud al backend y obtener sus detalles completos
+    if (empleado) {
+      this.apiService.getEmpleadoById(empleado.id).subscribe((data: any) => {
+        this.editEmpleadoData.user = {
+          ci: data.user.ci,
+          nombre: data.user.nombre,
+          apellido_paterno: data.user.apellido_paterno,
+          apellido_materno: data.user.apellido_materno,
+          telefono: data.user.telefono,
+          email: data.user.username // Usar el campo 'username' para obtener el correo
+        };
+        this.editEmpleadoData.fechaContratacion = data.fechaContratacion;
+        this.editEmpleadoData.estado = data.estado;
+        this.editEmpleadoData.especialidades = data.especialidades.map((e: any) => e.id);
+      }, (error: any) => {
+        console.error("No se pudo obtener el empleado", error);
+      });
+    }
   }
 }

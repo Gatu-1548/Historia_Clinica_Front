@@ -1,7 +1,8 @@
+/* Contenedor principal */
 .empleados-container {
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
@@ -10,22 +11,25 @@
 .create-btn {
     background-color: #28a745;
     color: white;
-    padding: 8px 12px;
-    margin-bottom: 10px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .create-btn:hover {
     background-color: #218838;
 }
 
-/* Tabla */
+/* Tabla de empleados */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    font-size: 16px;
 }
 
 th, td {
@@ -35,7 +39,7 @@ th, td {
 }
 
 thead {
-    background-color: #f9f9f9;
+    background-color: #f1f1f1;
 }
 
 /* Botones de acción */
@@ -43,9 +47,11 @@ thead {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .edit-btn:hover {
@@ -64,14 +70,16 @@ thead {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     margin: 0 5px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .pagination-container button:disabled {
     background-color: #ccc;
+    cursor: not-allowed;
 }
 
 /* Modal */
@@ -84,17 +92,17 @@ thead {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     position: relative;
 }
 
@@ -110,40 +118,63 @@ thead {
 
 h2 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
+/* Formulario en el modal */
 .form-group {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"], input[type="date"], input[type="email"], select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
+input[type="text"]:focus, input[type="date"]:focus, input[type="email"]:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botones en el modal */
 .save-btn {
     background-color: #007bff;
     color: white;
-    padding: 8px 12px;
+    padding: 12px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #0056b3;
 }
 
 .cancel-btn {
     background-color: #dc3545;
     color: white;
-    padding: 8px 12px;
+    padding: 12px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
 }

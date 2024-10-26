@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ManageUsuariosComponent } from '../administrador/manage-usuarios/manage-usuarios.component';
@@ -6,6 +6,7 @@ import { ManageRolesComponent } from '../administrador/manage-roles/manage-roles
 import { ManageEspecialidadesComponent } from '../registro/manage-especialidades/manage-especialidades.component';
 import { ManageEmpleadosComponent } from '../personal/manage-empleados/manage-empleados.component';
 import { PerfilComponent } from '../user/perfil/perfil.component'; // Importa el componente de perfil
+import { ManagePermissionsComponent } from '../administrador/manage-permissions/manage-permissions.component'; // Importa el nuevo componente
 
 @Component({
   selector: 'app-navbar',
@@ -17,12 +18,13 @@ import { PerfilComponent } from '../user/perfil/perfil.component'; // Importa el
     ManageRolesComponent,
     ManageEspecialidadesComponent,
     ManageEmpleadosComponent,
-    PerfilComponent, // Asegúrate de que el componente esté aquí
+    PerfilComponent,
+    ManagePermissionsComponent // Añade el componente de permisos
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   showSubMenu: { [key: string]: boolean } = {
     admin: false,
     registros: false,
@@ -33,6 +35,7 @@ export class NavbarComponent implements OnInit{
   showEspecialidadesPanel = false;
   showEmpleadosPanel = false;
   showProfilePanel = false; // Añade el panel de perfil
+  showPermissionsPanel = false; // Añade el panel de permisos
   isUserMenuOpen = false;
 
   userName: string = ''; // Variable para almacenar el nombre del usuario
@@ -42,7 +45,7 @@ export class NavbarComponent implements OnInit{
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');
     this.userName = user.nombre || 'Usuario'; // Usar 'Usuario' si no hay un nombre
   }
-  
+
   toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
   }
@@ -75,6 +78,13 @@ export class NavbarComponent implements OnInit{
     }
   }
 
+  togglePermissionsPanel() {
+    this.showPermissionsPanel = !this.showPermissionsPanel;
+    if (this.showPermissionsPanel) {
+      this.resetPanels('permisos');
+    }
+  }
+
   toggleUserMenu() {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
@@ -99,5 +109,6 @@ export class NavbarComponent implements OnInit{
     this.showEspecialidadesPanel = except === 'especialidades';
     this.showEmpleadosPanel = except === 'empleados';
     this.showProfilePanel = except === 'perfil';
+    this.showPermissionsPanel = except === 'permisos'; // Nuevo para permisos
   }
 }

@@ -1,61 +1,67 @@
 <div class="empleados-container">
-    <h2>Gestionar Empleados</h2>
-    <button (click)="openModal()" class="create-btn">Crear Empleado</button>
+  <h2>Gestionar Empleados</h2>
+  <button (click)="openModal()" class="create-btn">Crear Empleado</button>
 
-    <!-- Tabla de empleados -->
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Estado</th>
-          <th>Fecha de Contratación</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let empleado of empleadosPaginados">
-          <td>{{ empleado.id }}</td>
-          <td>{{ empleado.user.nombre }}</td>
-          <td>{{ empleado.user.apellido_paterno }}</td>
-          <td>{{ empleado.estado }}</td>
-          <td>{{ empleado.fechaContratacion }}</td>
-          <td>
-            <button (click)="editEmpleado(empleado)" class="edit-btn">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Tabla de empleados -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Especialidad</th>
+        <th>Estado</th>
+        <th>Fecha de Contratación</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empleado of empleadosPaginados">
+        <td>{{ empleado.id }}</td>
+        <td>{{ empleado.user.nombre }}</td>
+        <td>{{ empleado.user.apellido_paterno }}</td>
+        <td>{{ empleado.especialidades[0]?.nombre }}</td>
+        <td>{{ empleado.estado }}</td>
+        <td>{{ empleado.fechaContratacion }}</td>
+        <td>
+          <button (click)="editEmpleado(empleado)" class="edit-btn">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- Paginación -->
-    <div class="pagination-container">
-      <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
-      <span>Página {{ currentPage }} de {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  <!-- Paginación -->
+  <div class="pagination-container">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Modal para crear o editar empleado -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ editedEmpleado ? 'Editar Empleado' : 'Crear Empleado' }}</h2>
+      <form (ngSubmit)="editedEmpleado ? saveEmpleado() : createEmpleado()">
+        <div class="form-group">
+          <input type="text" [(ngModel)]="editEmpleadoData.user.ci" name="ci" placeholder="CI" required (blur)="autoFillForm(editEmpleadoData.user.ci)" />
+          <input type="text" [(ngModel)]="editEmpleadoData.user.nombre" name="nombre" placeholder="Nombre" required />
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="editEmpleadoData.user.apellido_paterno" name="apellidoPaterno" placeholder="Apellido Paterno" required />
+          <input type="text" [(ngModel)]="editEmpleadoData.user.apellido_materno" name="apellidoMaterno" placeholder="Apellido Materno" required />
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="editEmpleadoData.user.telefono" name="telefono" placeholder="Teléfono" />
+          <input type="email" [(ngModel)]="editEmpleadoData.user.email" name="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="editEmpleadoData.estado" name="estado" placeholder="Estado" required />
+          <input type="date" [(ngModel)]="editEmpleadoData.fechaContratacion" name="fechaContratacion" required />
+        </div>
+        <button type="submit" class="save-btn">Guardar</button>
+        <button type="button" (click)="closeModal()" class="cancel-btn">Cancelar</button>
+      </form>
     </div>
-
-    <!-- Modal para crear nuevo empleado -->
-    <div class="modal" *ngIf="isModalOpen">
-      <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <h2>Crear Nuevo Empleado</h2>
-        <form (ngSubmit)="createEmpleado()">
-          <div class="form-group">
-            <input type="text" [(ngModel)]="editEmpleadoData.user.ci" name="ci" placeholder="CI" required />
-            <input type="text" [(ngModel)]="editEmpleadoData.user.nombre" name="nombre" placeholder="Nombre" required />
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="editEmpleadoData.user.apellido_paterno" name="apellidoPaterno" placeholder="Apellido Paterno" required />
-            <input type="text" [(ngModel)]="editEmpleadoData.user.apellido_materno" name="apellidoMaterno" placeholder="Apellido Materno" required />
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="editEmpleadoData.estado" name="estado" placeholder="Estado" required />
-            <input type="date" [(ngModel)]="editEmpleadoData.fechaContratacion" name="fechaContratacion" required />
-          </div>
-          <button type="submit" class="save-btn">Guardar</button>
-          <button type="button" (click)="closeModal()" class="cancel-btn">Cancelar</button>
-        </form>
-      </div>
-    </div>
+  </div>
 </div>

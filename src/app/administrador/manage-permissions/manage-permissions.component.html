@@ -1,0 +1,19 @@
+<div class="permissions-container">
+    <h2>Gestionar Permisos</h2>
+    <div class="form-group">
+      <label for="role-select">Rol:</label>
+      <select [(ngModel)]="selectedRoleId" (change)="onRoleChange()" id="role-select">
+        <option *ngFor="let role of roles" [value]="role.id">{{ role.nombre }}</option>
+      </select>
+    </div>
+    <div class="permissions-list">
+      <h3>Permisos:</h3>
+      <div *ngFor="let permission of permissions" class="permission-item">
+        <input type="checkbox" 
+               [checked]="rolePermissions.includes(permission.id)" 
+               (change)="togglePermission(permission.id)" />
+        <span>{{ permission.nombre }}</span>
+      </div>
+    </div>
+    <button class="save-btn" (click)="savePermissions()">Guardar</button>
+  </div>
