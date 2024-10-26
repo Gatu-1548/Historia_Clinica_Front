@@ -5,6 +5,7 @@ import { ManageUsuariosComponent } from '../administrador/manage-usuarios/manage
 import { ManageRolesComponent } from '../administrador/manage-roles/manage-roles.component';
 import { ManageEspecialidadesComponent } from '../registro/manage-especialidades/manage-especialidades.component';
 import { ManageEmpleadosComponent } from '../personal/manage-empleados/manage-empleados.component';
+import { PerfilComponent } from '../user/perfil/perfil.component'; // Importa el componente de perfil
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,8 @@ import { ManageEmpleadosComponent } from '../personal/manage-empleados/manage-em
     ManageUsuariosComponent,
     ManageRolesComponent,
     ManageEspecialidadesComponent,
-    ManageEmpleadosComponent
+    ManageEmpleadosComponent,
+    PerfilComponent, // Asegúrate de que el componente esté aquí
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
@@ -30,7 +32,8 @@ export class NavbarComponent {
   showRolesPanel = false;
   showEspecialidadesPanel = false;
   showEmpleadosPanel = false;
-  isUserMenuOpen = false; //Controla la visibilidad del menu desplegable
+  showProfilePanel = false; // Añade el panel de perfil
+  isUserMenuOpen = false;
 
   toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
@@ -39,48 +42,53 @@ export class NavbarComponent {
   toggleUsuariosPanel() {
     this.showUsuariosPanel = !this.showUsuariosPanel;
     if (this.showUsuariosPanel) {
-      this.showRolesPanel = false;
-      this.showEspecialidadesPanel = false;
-      this.showEmpleadosPanel = false;
+      this.resetPanels('usuarios');
     }
   }
 
   toggleRolesPanel() {
     this.showRolesPanel = !this.showRolesPanel;
     if (this.showRolesPanel) {
-      this.showUsuariosPanel = false;
-      this.showEspecialidadesPanel = false;
-      this.showEmpleadosPanel = false;
+      this.resetPanels('roles');
     }
   }
 
   toggleEspecialidadesPanel() {
     this.showEspecialidadesPanel = !this.showEspecialidadesPanel;
     if (this.showEspecialidadesPanel) {
-      this.showUsuariosPanel = false;
-      this.showRolesPanel = false;
-      this.showEmpleadosPanel = false;
+      this.resetPanels('especialidades');
+    }
+  }
+
+  toggleEmpleadosPanel() {
+    this.showEmpleadosPanel = !this.showEmpleadosPanel;
+    if (this.showEmpleadosPanel) {
+      this.resetPanels('empleados');
     }
   }
 
   toggleUserMenu() {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
-  goToProfile(){
-    
-  }
 
-  toggleEmpleadosPanel() {
-    this.showEmpleadosPanel = !this.showEmpleadosPanel;
-    if (this.showEmpleadosPanel) {
-      this.showUsuariosPanel = false;
-      this.showRolesPanel = false;
-      this.showEspecialidadesPanel = false;
+  goToProfile() {
+    this.showProfilePanel = !this.showProfilePanel;
+    if (this.showProfilePanel) {
+      this.resetPanels('perfil');
     }
+    this.isUserMenuOpen = false;
   }
 
   logout() {
     localStorage.removeItem('token');
     window.location.href = '/';
+  }
+
+  private resetPanels(except: string) {
+    this.showUsuariosPanel = except === 'usuarios';
+    this.showRolesPanel = except === 'roles';
+    this.showEspecialidadesPanel = except === 'especialidades';
+    this.showEmpleadosPanel = except === 'empleados';
+    this.showProfilePanel = except === 'perfil';
   }
 }

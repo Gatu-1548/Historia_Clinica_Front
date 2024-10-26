@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';  // Importa el guard
 import { ManageUsuariosComponent } from './administrador/manage-usuarios/manage-usuarios.component';
 import { ManageRolesComponent } from './administrador/manage-roles/manage-roles.component'; // Asegúrate de tener este componente creado
 import { ManageEspecialidadesComponent } from './registro/manage-especialidades/manage-especialidades.component';
+import { PerfilComponent } from './user/perfil/perfil.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },  // Protege esta ruta con el guard
   { path: 'manage-usuarios', component: ManageUsuariosComponent },
   { path: 'gestionar-roles', component: ManageRolesComponent },
-  { path: 'gestionar-especialidades', component: ManageEspecialidadesComponent }  
+  { path: 'gestionar-especialidades', component: ManageEspecialidadesComponent },
+  { path: 'perfil', component: PerfilComponent } // Ruta para el perfil
 ];
