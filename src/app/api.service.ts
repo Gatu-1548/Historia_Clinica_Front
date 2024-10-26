@@ -55,4 +55,20 @@ deleteRole(id: number): Observable<any> {
   return this.http.delete<any>(`${this.baseUrl}/auth/roles/${id}`);
 }
 
+getEspecialidades(): Observable<any> {
+  return this.http.get<any>(`${this.baseUrl}/auth/especialidades`);
+}
+
+createEspecialidad(especialidad: any): Observable<any> {
+  return this.http.post<any>(`${this.baseUrl}/auth/especialidades/crear`, especialidad);
+}
+
+updateEspecialidad(id: number, especialidad: any): Observable<any> {
+  return this.http.put<any>(`${this.baseUrl}/auth/especialidades/${id}`, especialidad);
+}
+
+deleteEspecialidad(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.baseUrl}/auth/especialidades/${id}`);
+}
+
 }

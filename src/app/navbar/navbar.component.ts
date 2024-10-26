@@ -2,39 +2,50 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ManageUsuariosComponent } from '../administrador/manage-usuarios/manage-usuarios.component';
-import { ManageRolesComponent } from '../administrador/manage-roles/manage-roles.component'; // Importa el componente
+import { ManageRolesComponent } from '../administrador/manage-roles/manage-roles.component';
+import { ManageEspecialidadesComponent } from '../registro/manage-especialidades/manage-especialidades.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, ManageUsuariosComponent, ManageRolesComponent], // Asegúrate de importar el componente
+  imports: [RouterModule, CommonModule, ManageUsuariosComponent, ManageRolesComponent, ManageEspecialidadesComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
   showSubMenu: { [key: string]: boolean } = {
-    admin: false
+    admin: false,
+    registros: false
   };
-  showUsuariosPanel = false; // Controla la visibilidad del panel de usuarios
-  showRolesPanel = false;    // Controla la visibilidad del panel de roles
+  showUsuariosPanel = false;
+  showRolesPanel = false;
+  showEspecialidadesPanel = false;
 
   toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
   }
 
   toggleUsuariosPanel() {
-    // Muestra/oculta el panel de usuarios y cierra el panel de roles
     this.showUsuariosPanel = !this.showUsuariosPanel;
     if (this.showUsuariosPanel) {
-      this.showRolesPanel = false; // Cerrar el panel de roles si se abre el de usuarios
+      this.showRolesPanel = false;
+      this.showEspecialidadesPanel = false;
     }
   }
 
   toggleRolesPanel() {
-    // Muestra/oculta el panel de roles y cierra el panel de usuarios
     this.showRolesPanel = !this.showRolesPanel;
     if (this.showRolesPanel) {
-      this.showUsuariosPanel = false; // Cerrar el panel de usuarios si se abre el de roles
+      this.showUsuariosPanel = false;
+      this.showEspecialidadesPanel = false;
+    }
+  }
+
+  toggleEspecialidadesPanel() {
+    this.showEspecialidadesPanel = !this.showEspecialidadesPanel;
+    if (this.showEspecialidadesPanel) {
+      this.showUsuariosPanel = false;
+      this.showRolesPanel = false;
     }
   }
 

@@ -21,25 +21,31 @@
       <a (click)="toggleSubMenu('admin')"><i class="fa fa-cogs"></i> Administrador</a>
       <ul *ngIf="showSubMenu['admin']">
         <li><a (click)="toggleUsuariosPanel()"><i class="fa fa-users"></i> Administrar Usuarios</a></li>
-        <li><a (click)="toggleRolesPanel()"><i class="fa fa-users-cog"></i> Gestionar Roles</a></li> <!-- Nueva opción para gestionar roles -->
-        <!-- Otras opciones del administrador -->
+        <li><a (click)="toggleRolesPanel()"><i class="fa fa-users-cog"></i> Gestionar Roles</a></li>
       </ul>
     </li>
-    <li><a routerLink="/registros"><i class="fa fa-book"></i> Registros</a></li>
+    <li>
+      <a (click)="toggleSubMenu('registros')"><i class="fa fa-book"></i> Registros</a>
+      <ul *ngIf="showSubMenu['registros']">
+        <li><a (click)="toggleEspecialidadesPanel()"><i class="fa fa-stethoscope"></i> Gestionar Especialidades</a></li>
+      </ul>
+    </li>
     <li><a routerLink="/configuracion"><i class="fa fa-wrench"></i> Configuración</a></li>
     <li><a routerLink="/atenciones-medicas"><i class="fa fa-stethoscope"></i> Atenciones Médicas</a></li>
   </ul>
 </nav>
 
-<!-- Panel que contiene el listado de usuarios y roles -->
+<!-- Panel de contenido -->
 <div class="dashboard-container">
   <div class="content">
     <div *ngIf="showUsuariosPanel" class="usuarios-panel">
       <app-manage-usuarios></app-manage-usuarios>
     </div>
     <div *ngIf="showRolesPanel" class="roles-panel">
-      <app-manage-roles></app-manage-roles> <!-- Añadimos el componente de roles aquí -->
+      <app-manage-roles></app-manage-roles>
+    </div>
+    <div *ngIf="showEspecialidadesPanel" class="especialidades-panel">
+      <app-manage-especialidades></app-manage-especialidades>
     </div>
   </div>
-  <router-outlet></router-outlet> <!-- Aquí se mostrarán los componentes -->
 </div>
