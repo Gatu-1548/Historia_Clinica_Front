@@ -1,0 +1,52 @@
+/* Contenedor principal del perfil */
+.profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para la información del perfil */
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Cada fila del perfil */
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Etiqueta de cada campo */
+  .profile-row label {
+    font-weight: bold;
+    color: #555;
+    flex: 1;
+  }
+  
+  /* Valor de cada campo */
+  .profile-row span {
+    flex: 2;
+    color: #333;
+    text-align: right;
+  }
+  
+  /* Estilo de la última fila para que no tenga borde */
+  .profile-row:last-child {
+    border-bottom: none;
+  }
+  

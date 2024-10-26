@@ -30,6 +30,7 @@ export class NavbarComponent {
   showRolesPanel = false;
   showEspecialidadesPanel = false;
   showEmpleadosPanel = false;
+  isUserMenuOpen = false; //Controla la visibilidad del menu desplegable
 
   toggleSubMenu(menu: string) {
     this.showSubMenu[menu] = !this.showSubMenu[menu];
@@ -60,6 +61,13 @@ export class NavbarComponent {
       this.showRolesPanel = false;
       this.showEmpleadosPanel = false;
     }
+  }
+
+  toggleUserMenu() {
+    this.isUserMenuOpen = !this.isUserMenuOpen;
+  }
+  goToProfile(){
+    
   }
 
   toggleEmpleadosPanel() {
